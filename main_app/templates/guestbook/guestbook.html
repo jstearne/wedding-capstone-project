@@ -2,4 +2,19 @@
 
 <h1 class="title">Guestbook</h1>
 
+USER: {{user.username}} <br><br>
+
+RSVP'd: {{author.guest.rsvp}} <br><br>
+
+Post Title: {{ user.post.title }} <br><br>
+
+{% for post in posts %}
+<h1>
+    {{ post.title }}
+</h1>
+{% endfor %}
+
+
+
 {% endblock %} 
+

@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.views.generic import DetailView
 from django.views.generic.edit import UpdateView, CreateView, UpdateView, DeleteView
 from .models import Post, Guest
 # at top of file with other imports
@@ -64,13 +65,35 @@ class Photos(TemplateView): # good as is
 
 # Guestbook Views (post CRUD functionality)
 @method_decorator(login_required, name='dispatch') # block access if not registered
-class Guestbook(TemplateView): #needs to be refactored into CRUD
+class Guestbook(TemplateView):
     template_name = "guestbook/guestbook.html"
 
     def get_context_data(self, **kwargs):
+        print(Post)
         context = super().get_context_data(**kwargs)
-        context["posts"] = Post.objects.all()
+        title = self.request.GET.get("title")
+        if title != None:
+            # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
+            context["artists"] = Post.objects.filter(title__icontains=title, user=self.request.user)
+            context["header"] = f"Searching for \"{title}\""
+        else:
+            context["artists"] = Post.objects.filter(user=self.request.user)
+            context["header"] = "Trending Artists"
         return context
+
+
+# class Guestbook(DetailView): #needs to be refactored into CRUD
+#     model = Post
+#     template_name = "guestbook/guestbook.html"
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["posts"] = Post.objects.all()
+#         return context
 
 
 

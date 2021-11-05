@@ -31,7 +31,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self): # django-admin: what Posts show up as 
-        return str(self.created_at)
+        return str(self.title)
 
     class Meta:
         ordering = ['created_at']
