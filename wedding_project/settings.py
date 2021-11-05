@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'wedding_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jo-and-jared',
+        'NAME': 'jo_and_jared',
     }
 }
 
