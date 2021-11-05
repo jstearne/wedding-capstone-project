@@ -12,7 +12,7 @@ class Guest(models.Model):
     display_name = models.CharField(max_length=256, default='anonymous')
     rsvp = models.BooleanField(default=False)
 
-    def __str__(self):
+    def __str__(self): # django-admin: what Guests show up as. Most things cause errors...?
         return self.user.username
 
 @ receiver(post_save, sender=User)
@@ -24,14 +24,14 @@ def create_guest(sender, instance, created, **kwargs):
 
 
 class Post(models.Model):
-    title: models.CharField(max_length=150)
+    title: models.CharField(max_length=150, default="Title")
     body: models.TextField(max_length=999)
     created_at = models.DateTimeField(auto_now_add=True)
     image = ImageField(upload_to='media/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.user
+    def __str__(self): # django-admin: what Posts show up as 
+        return str(self.created_at)
 
     class Meta:
         ordering = ['created_at']
