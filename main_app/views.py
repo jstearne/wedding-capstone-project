@@ -39,7 +39,7 @@ class Login(TemplateView):
 
 @method_decorator(login_required, name='dispatch') # block access if not registered
 class Guestbook(TemplateView): #needs to be refactored into CRUD
-    template_name = "guestbook.html"
+    template_name = "guestbook/guestbook.html"
 
 
 @method_decorator(login_required, name='dispatch') # block access if not registered
