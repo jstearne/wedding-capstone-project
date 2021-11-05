@@ -135,3 +135,6 @@ django_on_heroku.settings(locals())
 # temp
 DATABASES['default'] = dj_database_url.config(
     conn_max_age=600, ssl_require=True)
+
+# jo-and-jared
+# https://jo-and-jared.herokuapp.com/
