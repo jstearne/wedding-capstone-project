@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import UpdateView, CreateView, UpdateView, DeleteView
 from .models import Post, Guest
 # at top of file with other imports
 from django.contrib.auth import login
@@ -71,5 +72,28 @@ class Guestbook(TemplateView): #needs to be refactored into CRUD
         context["posts"] = Post.objects.all()
         return context
 
+
+
+class CreatePost(CreateView):
+    model = Post
+    fields = ["title", "body", "created_at", "image", "user"]
+    template_name = "post_create.html"
+    success_url = "/guestbook"
+
+
+
+class UpdatePost(UpdateView):
+    model = Post
+    fields = ["title", "body", "created_at", "image", "user"]
+    template_name = "post_update.html"
+    success_url = "/guestbook"
+
+
+
+# post_delete is a confirmation page!
+class DeletePost(DeleteView):
+    model = Post
+    template_name = "post_delete.html"
+    success_url = "/guestbook"
 
 
