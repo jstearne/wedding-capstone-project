@@ -27,12 +27,12 @@ class Post(models.Model):
     title = models.CharField(default="", max_length=150)
     body = models.CharField(default="", max_length=999)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = ImageField(upload_to='media/')
+    image = ImageField(upload_to='media/', blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self): # django-admin: what Posts show up as 
         return str(self.title)
 
     class Meta:
-        ordering = ['created_at']
+        ordering = ['title']
 

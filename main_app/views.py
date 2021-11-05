@@ -99,8 +99,8 @@ class Guestbook(TemplateView):
 
 class CreatePost(CreateView):
     model = Post
-    fields = ["title", "body", "created_at", "image", "user"]
-    template_name = "post_create.html"
+    fields = ["title", "body", "image", "user"]
+    template_name = "guestbook/post_create.html"
     success_url = "/guestbook"
 
 
