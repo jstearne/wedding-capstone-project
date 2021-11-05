@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # notes on name=""
     path('', views.Home.as_view(), name="home"),
     path('guestbook/', views.Guestbook.as_view(), name="guestbook"),
 # Post CRUD functionality (Guestbook serves as READ)
