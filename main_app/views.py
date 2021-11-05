@@ -99,7 +99,6 @@ class UpdatePost(UpdateView):
     success_url = "/guestbook"
 
 
-
 # post_delete is a confirmation page!
 class DeletePost(DeleteView):
     model = Post

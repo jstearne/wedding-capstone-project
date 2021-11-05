@@ -19,11 +19,12 @@ I may need to add an author-field to posts to get 'post-author'...
     POST BODY: {{ post.body }}<br><br>
     POST AUTHOR: {{ post.user.username }}<br>
     AUTHOR RSVPD: {{post.user.guest.rsvp}}<br>
+    <!--Get this to work!-->
     <a href="{% url 'post_update' post.pk %}">Edit</a>
 <hr class="solid">
 {% endfor %}
 
-<!--To 'create_post.html' to create a new post!-->
+<!--Later, this form must appear on main screen at all times-->
 <a href="{% url 'create_post' %}">Create Post</a>
 <br><br>
 
