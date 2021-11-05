@@ -6,9 +6,9 @@ urlpatterns = [
     path('guestbook/', views.Guestbook.as_view(), name="guestbook"),
 
 # Post CRUD functionality (Guestbook serves as READ)
-    # path('posts/new/', views.Create_Post.as_view(), name="create_post"),
-    # path('posts/<int:pk>/update', views.PostUpdate.as_view(), name="post_update"),
-    # path('posts/<int:pk>/delete', views.PostDelete.as_view(), name="post_delete"),
+    path('posts/new/', views.CreatePost.as_view(), name="create_post"),
+    path('posts/<int:pk>/update', views.PostUpdate.as_view(), name="post_update"),
+    path('posts/<int:pk>/delete', views.PostDelete.as_view(), name="post_delete"),
 
     path('accommodations/', views.Accommodations.as_view(), name="accommodations"),
     path('schedule/', views.Schedule.as_view(), name="schedule"),
