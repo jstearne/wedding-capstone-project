@@ -10,17 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
-import os
-import django_on_heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/home/jstearne/Projects/ga-final-project/wedding-capstone-project/wedding_project/static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, '/static'),
+# )
 
 
 # Quick-start development settings - unsuitable for production
@@ -125,8 +123,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/home/jstearne/Projects/ga-final-project/wedding-capstone-project/wedding_project/static'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -136,3 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configure Django App for Heroku.
 import django_on_heroku
 django_on_heroku.settings(locals())
+
+# temp
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)
