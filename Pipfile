@@ -9,6 +9,7 @@ dj-database-url = "*"
 psycopg2-binary = "*"
 django = "*"
 django-on-heroku = "*"
+pillow = "*"
 
 [dev-packages]
 
