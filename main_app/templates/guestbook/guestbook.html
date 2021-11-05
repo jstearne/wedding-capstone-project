@@ -1,5 +1,31 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 class="title">Guestbook</h1>
+<h3>Guestbook</h3>
+
+Currently logged in user: {{user.username}} = "{ user.username }" <br>
+
+Currently logged in user RSVPD?: {{user.guest.rsvp}} = "{ user.guest.rsvp }"<br>
+
+Original post author: "{ post.user.username }" <br>
+
+Original post author RSVP: "{ post.user.guest.rsvp }"
+
+I may need to add an author-field to posts to get 'post-author'...
+
+<hr class="solid">
+{% for post in posts %}
+
+    POST TITLE: {{ post.title }}<br>
+    POST BODY: {{ post.body }}<br><br>
+    POST AUTHOR: {{ post.user.username }}<br>
+    AUTHOR RSVPD: {{post.user.guest.rsvp}}<br>
+    <a href="{% url 'post_update' post.pk %}">Edit</a>
+<hr class="solid">
+{% endfor %}
+
+<!--To 'create_post.html' to create a new post!-->
+<a href="{% url 'create_post' %}">Create Post</a>
+<br><br>
 
 {% endblock %} 
+
