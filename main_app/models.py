@@ -24,8 +24,8 @@ def create_guest(sender, instance, created, **kwargs):
 
 
 class Post(models.Model):
-    title: models.CharField(max_length=150, default="Title")
-    body: models.TextField(max_length=999)
+    title = models.CharField(default="", max_length=150)
+    body: models.TextField(default="Can't wait!", max_length=999)
     created_at = models.DateTimeField(auto_now_add=True)
     image = ImageField(upload_to='media/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
