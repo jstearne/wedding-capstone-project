@@ -95,7 +95,7 @@ class CreatePost(CreateView):
 class UpdatePost(UpdateView):
     model = Post
     fields = ["title", "body", "image"]
-    template_name = "post_update.html"
+    template_name = "/guestbook/post_update.html"
     success_url = "/guestbook"
 
 
@@ -103,7 +103,7 @@ class UpdatePost(UpdateView):
 # post_delete is a confirmation page!
 class DeletePost(DeleteView):
     model = Post
-    template_name = "post_delete.html"
+    template_name = "/guestbook/post_delete.html"
     success_url = "/guestbook"
 
 
