@@ -81,48 +81,15 @@ class Guestbook(TemplateView):
 
 
 
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     #    context["dogs"] = Dog.objects.filter(name__icontains=name)
-    #     return context
-
-
-    # def get_context_data(self, **kwargs):
-    #     print(Post)
-    #     context = super().get_context_data(**kwargs)
-    #     title = self.request.GET.get("title")
-    #     if title != None:
-    #         # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
-    #         context["artists"] = Post.objects.filter(title__icontains=title, user=self.request.user)
-    #         context["header"] = f"Searching for \"{title}\""
-    #     else:
-    #         context["artists"] = Post.objects.filter(user=self.request.user)
-    #         context["header"] = "Trending Artists"
-    #     return context
-
-
-# class Guestbook(DetailView): #needs to be refactored into CRUD
-#     model = Post
-#     template_name = "guestbook/guestbook.html"
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["posts"] = Post.objects.all()
-#         return context
-
-
-
 class CreatePost(CreateView):
     model = Post
-    fields = ["title", "body", "image", "user"]
+    fields = ["title", "body", "image"] # no option to select user!
     template_name = "guestbook/post_create.html"
     success_url = "/guestbook"
 
+    def form_valid(self, form): # make sure posts are saving who posted!
+        form.instance.user = self.request.user
+        return super(CreatePost, self).form_valid(form)
 
 
 class UpdatePost(UpdateView):
