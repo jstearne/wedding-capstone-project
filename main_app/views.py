@@ -94,7 +94,7 @@ class CreatePost(CreateView):
 
 class UpdatePost(UpdateView):
     model = Post
-    fields = ["title", "body", "created_at", "image", "user"]
+    fields = ["title", "body", "image"]
     template_name = "post_update.html"
     success_url = "/guestbook"
 

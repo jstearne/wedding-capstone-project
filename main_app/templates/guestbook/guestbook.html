@@ -19,6 +19,7 @@ I may need to add an author-field to posts to get 'post-author'...
     POST BODY: {{ post.body }}<br><br>
     POST AUTHOR: {{ post.user.username }}<br>
     AUTHOR RSVPD: {{post.user.guest.rsvp}}<br>
+    <a href="{% url 'post_update' post.pk %}">Edit</a>
 <hr class="solid">
 {% endfor %}
 
