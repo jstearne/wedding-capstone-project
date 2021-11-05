@@ -10,10 +10,14 @@ Post Title: {{ user.post.title }} <br><br>
 
 {% for post in posts %}
 <h1>
-    {{ post.title }}
+    POST TITLE: {{ post.title }}<br>
+    POST BODY: {{ post.body }}<br>
+    POST AUTHOR: {{ post.guest.display_name }}<br>
+    RSVP: {{ post.display_name }}<br>
 </h1>
 {% endfor %}
 
+<!--To 'create_post.html' to create a new post!-->
 <a href="{% url 'create_post' %}">Create Post</a>
 
 {% endblock %} 

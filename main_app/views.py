@@ -69,17 +69,37 @@ class Guestbook(TemplateView):
     template_name = "guestbook/guestbook.html"
 
     def get_context_data(self, **kwargs):
-        print(Post)
         context = super().get_context_data(**kwargs)
-        title = self.request.GET.get("title")
-        if title != None:
-            # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
-            context["artists"] = Post.objects.filter(title__icontains=title, user=self.request.user)
-            context["header"] = f"Searching for \"{title}\""
+        name = self.request.GET.get('name')
+        if name != None:
+            context["posts"] = Post.objects.filter(name__icontains=name) 
+            # context["header"] = f"Searching for \"{name}\"" 
         else:
-            context["artists"] = Post.objects.filter(user=self.request.user)
-            context["header"] = "Trending Artists"
+            context["posts"] = Post.objects.all()
+            # context["header"] = "Dogs!"
         return context
+
+
+
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     #    context["dogs"] = Dog.objects.filter(name__icontains=name)
+    #     return context
+
+
+    # def get_context_data(self, **kwargs):
+    #     print(Post)
+    #     context = super().get_context_data(**kwargs)
+    #     title = self.request.GET.get("title")
+    #     if title != None:
+    #         # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
+    #         context["artists"] = Post.objects.filter(title__icontains=title, user=self.request.user)
+    #         context["header"] = f"Searching for \"{title}\""
+    #     else:
+    #         context["artists"] = Post.objects.filter(user=self.request.user)
+    #         context["header"] = "Trending Artists"
+    #     return context
 
 
 # class Guestbook(DetailView): #needs to be refactored into CRUD
