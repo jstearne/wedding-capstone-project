@@ -128,6 +128,9 @@ STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_REDIRECT_URL = '/guestbook/'
+LOGOUT_REDIRECT_URL = '/'
+
 # Configure Django App for Heroku.
 import django_on_heroku
 django_on_heroku.settings(locals())
