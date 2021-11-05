@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'wedding_project/wedding_project/static'),
+    os.path.join(BASE_DIR, '/home/jstearne/Projects/ga-final-project/wedding-capstone-project/wedding_project/static'),
 )
 
 
