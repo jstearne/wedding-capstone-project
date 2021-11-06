@@ -65,7 +65,7 @@ class Photos(TemplateView): # good as is
 # Guestbook Views (post CRUD functionality)
 @method_decorator(login_required, name='dispatch') # block access if not registered
 class Guestbook(TemplateView): #needs to be refactored into CRUD
-    template_name = "guestbook/guestbook.html"
+    template_name = "guestbook.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -77,7 +77,7 @@ class Guestbook(TemplateView): #needs to be refactored into CRUD
 class CreatePost(CreateView):
     model = Post
     fields = ["title", "body", "created_at", "image", "user"]
-    template_name = "post_create.html"
+    template_name = "guestbook_create.html"
     success_url = "/guestbook"
 
 
@@ -85,7 +85,7 @@ class CreatePost(CreateView):
 class UpdatePost(UpdateView):
     model = Post
     fields = ["title", "body", "created_at", "image", "user"]
-    template_name = "post_update.html"
+    template_name = "guestbook_update.html"
     success_url = "/guestbook"
 
 
@@ -93,7 +93,7 @@ class UpdatePost(UpdateView):
 # post_delete is a confirmation page!
 class DeletePost(DeleteView):
     model = Post
-    template_name = "post_delete.html"
+    template_name = "guestbook_delete.html"
     success_url = "/guestbook"
 
 
