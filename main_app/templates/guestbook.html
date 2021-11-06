@@ -20,12 +20,12 @@ I may need to add an author-field to posts to get 'post-author'...
     POST AUTHOR: {{ post.user.username }}<br>
     AUTHOR RSVPD: {{post.user.guest.rsvp}}<br>
     <!--Get this to work!-->
-    <a href="{% url 'post_update' post.pk %}">Edit</a>
+    <a href="{% url 'guestbook_update' post.pk %}">Edit</a>
 <hr class="solid">
 {% endfor %}
 
 <!--Later, this form must appear on main screen at all times-->
-<a href="{% url 'create_post' %}">Create Post</a>
+<a href="{% url 'guestbook_create' %}">Create Post</a>
 <br><br>
 
 {% endblock %} 
