@@ -2,9 +2,9 @@
 
 <h3>Guestbook</h3>
 
-Currently logged in user: {{user.username}} = "{ user.username }" <br>
+Currently logged in user: "{user.username}"" = "{ user.username }" <br>
 
-Currently logged in user RSVPD?: "{user.guest.rsvp}"" = "{ user.guest.rsvp }"<br>
+Currently logged in user RSVPD?: "{user.guest.rsvp}" = "{ user.guest.rsvp }"<br>
 
 Original post author: "{ post.user.username }" <br>
 
@@ -14,11 +14,11 @@ I may need to add an author-field to posts to get 'post-author'...
 
 <hr class="solid">
 {% for post in posts %}
-
+<!-- 
     POST TITLE: {{ post.title }}<br>
     POST BODY: {{ post.body }}<br><br>
     POST AUTHOR: {{ post.user.username }}<br>
-    AUTHOR RSVPD: "{post.user.guest.rsvp}"<br>
+    AUTHOR RSVPD: "{post.user.guest.rsvp}"<br>-->
     <!--Guest relation not working - test if its this on guestbook page-->
 
 
