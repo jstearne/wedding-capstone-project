@@ -6,7 +6,7 @@ urlpatterns = [
     path('', views.Home.as_view(), name="home"),
     path('guestbook/', views.Guestbook.as_view(), name="guestbook"),
 # Post CRUD functionality (Guestbook serves as READ)
-    path('guestbook/new/', views.CreatePost.as_view(), name="create_post"),
+    path('guestbook/new/', views.CreatePost.as_view(), name="guestbook_create"),
 
     # giving me a ton of reverse errors that didn't happen all week. What's going on?
     path('guestbook/<int:pk>/update/', views.UpdatePost.as_view(), name="guestbook_update"),

@@ -76,7 +76,7 @@ class Guestbook(TemplateView): #needs to be refactored into CRUD
 
 class CreatePost(CreateView):
     model = Post
-    fields = ["title", "body", "created_at", "image", "user"]
+    fields = ["title", "body", "image"]
     template_name = "guestbook_create.html"
     success_url = "guestbook"
 
