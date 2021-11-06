@@ -37,8 +37,7 @@
 
 
 
-
-
+<!--VERY basic css for low-fi wireframe-->
 <style>
     nav{
         background-color: lightgreen;
@@ -52,23 +51,24 @@
     }
     h3 {
         text-align: center;
-    }
-    
+    }    
 </style>
 
-<!--Website content for nav-->
+
+
+<!--Call To Action-->
 <h1>Joellen & Jared</h1>
 <h3>07.16.2021</h3>
 <h3>Corgis! Wine! Heaven?</h3>
+<!--End Call To Action-->
 
 <!--SUBNAV: secondary link nav at bottom of first nav-->
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+    <!--Hamburger Menu-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    <!--Hamburger Menu-->
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <!--RSVP drop down menu inside of subnav drop down: Remove if I can't get links working later-->
@@ -83,16 +83,16 @@
             </li>
             <!--Rest of drop-down subnav links-->
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Guestbook</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'guestbook' %}">Guestbook</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Schedule</a>
+            <a class="nav-link" href="{% url 'schedule' %}">Schedule</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Accommodations</a>
+            <a class="nav-link" href="{% url 'accommodations' %}">Accommodations</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Photos</a>
+            <a class="nav-link" href="{% url 'photos' %}">Photos</a>
           </li>
         </ul>
       </div>
