@@ -78,7 +78,7 @@ class CreatePost(CreateView):
     model = Post
     fields = ["title", "body", "created_at", "image", "user"]
     template_name = "guestbook_create.html"
-    success_url = "/guestbook"
+    success_url = "guestbook"
 
 
 
@@ -86,7 +86,7 @@ class UpdatePost(UpdateView):
     model = Post
     fields = ["title", "body", "image"]
     template_name = "guestbook_update.html"
-    success_url = "/guestbook"
+    success_url = "guestbook"
 
 
 
@@ -94,6 +94,6 @@ class UpdatePost(UpdateView):
 class DeletePost(DeleteView):
     model = Post
     template_name = "guestbook_delete.html"
-    success_url = "/guestbook"
+    success_url = "guestbook"
 
 
