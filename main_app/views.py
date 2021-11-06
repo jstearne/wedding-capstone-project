@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from django.views.generic import DetailView
 from django.views.generic.edit import UpdateView, CreateView, UpdateView, DeleteView
 from .models import Post, Guest
 # at top of file with other imports
@@ -65,44 +64,36 @@ class Photos(TemplateView): # good as is
 
 # Guestbook Views (post CRUD functionality)
 @method_decorator(login_required, name='dispatch') # block access if not registered
-class Guestbook(TemplateView):
+class Guestbook(TemplateView): #needs to be refactored into CRUD
     template_name = "guestbook/guestbook.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        name = self.request.GET.get('name')
-        if name != None:
-            context["posts"] = Post.objects.filter(name__icontains=name) 
-            # context["header"] = f"Searching for \"{name}\"" 
-        else:
-            context["posts"] = Post.objects.all()
-            # context["header"] = "Dogs!"
+        context["posts"] = Post.objects.all()
         return context
 
 
 
 class CreatePost(CreateView):
     model = Post
-    fields = ["title", "body", "image"] # no option to select user!
-    template_name = "guestbook/post_create.html"
+    fields = ["title", "body", "created_at", "image", "user"]
+    template_name = "post_create.html"
     success_url = "/guestbook"
 
-    def form_valid(self, form): # make sure posts are saving who posted!
-        form.instance.user = self.request.user
-        return super(CreatePost, self).form_valid(form)
 
 
 class UpdatePost(UpdateView):
     model = Post
-    fields = ["title", "body", "image"]
-    template_name = "/guestbook/post_update.html"
+    fields = ["title", "body", "created_at", "image", "user"]
+    template_name = "post_update.html"
     success_url = "/guestbook"
+
 
 
 # post_delete is a confirmation page!
 class DeletePost(DeleteView):
     model = Post
-    template_name = "/guestbook/post_delete.html"
+    template_name = "post_delete.html"
     success_url = "/guestbook"
 
 
