@@ -19,20 +19,19 @@ I may need to add an author-field to posts to get 'post-author'...
     POST TITLE: {{ post.title }}<br>
     POST BODY: {{ post.body }}<br><br>
     POST AUTHOR: {{ post.user.username }}<br>
-    AUTHOR RSVPD: "{post.user.guest.rsvp}"<br>
+    AUTHOR RSVPD: {{post.user.guest.rsvp}}<br>
     <!--Guest relation not working - test if its this on guestbook page-->
-
-
-<!--THIS LINK IS THE PROBLEM, doesn't work for update-->
-    <a href="{% url 'photos' %}">Edit</a>
+<br>
+<a href="{% url 'guestbook_update' post.pk %}">Edit</a>
+<br>
+<a href="{% url 'guestbook_delete' post.pk %}">Delete</a>
+<br>
 <hr class="solid">
-
-
 {% endfor %}
-
-<!--THIS LINK IS THE PROBLEM, doesn't work for delete-->
-<a href="{% url 'guestbook' %}">Create Post</a>
-<br><br>
-
+<br>
+<br>
+<a href="{% url 'guestbook_create' %}">Create Post</a>
+<br>
+<br>
 {% endblock %} 
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<h1 class="title pt-5">Are you sure you want to Delete {{park.name}}?</h1>
+<h1 class="title pt-5">Are you sure you want to Delete {{post.title}}?</h1>
 <form method="post">
   {% csrf_token %}
   <div class="buttons">
