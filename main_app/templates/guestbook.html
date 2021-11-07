@@ -1,6 +1,54 @@
 {% extends 'base.html' %} {% block content %}
-
+<br>
 <h3>Guestbook</h3>
+
+
+
+
+<!--Two column format: left is all posts, right is static post form: https://getbootstrap.com/docs/5.1/layout/columns/ -->
+<div class="container">
+    <div class="row">
+        <div class="col"> <!--Left half of page-->
+<br><br>
+<a href="{% url 'guestbook_create' %}">Leave a Message</a>
+<br><br>
+    <!--POST LOOP-->
+        {% for post in posts %}
+        <!--Bootstrap card for every post in DB-->
+            <div class="card">
+                <div class="card-header">TITLE: {{ post.title }}</div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>BODY: {{ post.body }}</p>
+                        <footer class="blockquote-footer">POST AUTHOR: {{ post.user.username }} 
+                        <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
+                    </blockquote>
+                    <a href="{% url 'guestbook_update' post.pk %}">Edit</a>&nbsp; &nbsp; 
+                    <a href="{% url 'guestbook_delete' post.pk %}">Delete</a>
+                    <br>
+                </div>
+            </div>
+        <!--END Bootstrap card-->
+        {% endfor %}
+    <!--END POST LOOP-->
+        </div>
+        <!--Create Post on Right side of page-->
+        <div class="col"> <!--Right half of page-->
+            <br>
+            This is the right side of the page!<br>
+            Good place for a new post form, yeah!?<br>
+        </div>
+    </div>
+<!--End of right column-->
+    <br><br>
+    <a href="{% url 'guestbook_create' %}">Leave a Message</a>
+    <br><br>
+    <hr class="solid">
+</div>
+<!--END OF TWO COLUMNS (footer underneath, optional)-->
+
+
+Syntax reminders...<br>
 
 Currently logged in user: "{user.username}"" = "{ user.username }" <br>
 
@@ -12,26 +60,5 @@ Original post author RSVP: "{ post.user.guest.rsvp }"
 
 I may need to add an author-field to posts to get 'post-author'...
 
-<hr class="solid">
-{% for post in posts %}
-
-
-    POST TITLE: {{ post.title }}<br>
-    POST BODY: {{ post.body }}<br><br>
-    POST AUTHOR: {{ post.user.username }}<br>
-    AUTHOR RSVPD: {{post.user.guest.rsvp}}<br>
-    <!--Guest relation not working - test if its this on guestbook page-->
-<br>
-<a href="{% url 'guestbook_update' post.pk %}">Edit</a>
-<br>
-<a href="{% url 'guestbook_delete' post.pk %}">Delete</a>
-<br>
-<hr class="solid">
-{% endfor %}
-<br>
-<br>
-<a href="{% url 'guestbook_create' %}">Create Post</a>
-<br>
-<br>
 {% endblock %} 
 
