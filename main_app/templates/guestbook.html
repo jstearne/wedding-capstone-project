@@ -25,18 +25,57 @@
                     </blockquote>
                     <a href="{% url 'guestbook_update' post.pk %}">Edit</a>&nbsp; &nbsp; 
                     <a href="{% url 'guestbook_delete' post.pk %}">Delete</a>
-                    <br>
+                    <br><br>
+
+
+
+
+<!--TEST MODAL-->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    TEST DELETE
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Delete?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <!--Delete functionality-->
+          <form action="{% url 'guestbook_delete' post.pk %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-danger">Delete</button>
+          </form>
+          <!--Delete functionality-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--TEST MODAL-->
+
+
                 </div>
             </div>
         <!--END Bootstrap card-->
         {% endfor %}
-    <!--END POST LOOP-->
+        <!--END POST LOOP-->
         </div>
+
         <!--Create Post on Right side of page-->
         <div class="col"> <!--Right half of page-->
             <br>
             This is the right side of the page!<br>
-            Good place for a new post form, yeah!?<br>
+            <br>
+            <br>
         </div>
     </div>
 <!--End of right column-->
@@ -46,6 +85,23 @@
     <hr class="solid">
 </div>
 <!--END OF TWO COLUMNS (footer underneath, optional)-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Syntax reminders...<br>
