@@ -97,3 +97,12 @@ class DeletePost(DeleteView):
     success_url = "guestbook"
 
 
+
+class GuestRsvp(UpdateView):
+    model = Guest
+    fields = ["rsvp"]
+    template_name = "rsvp.html"
+    success_url = "guestbook"
+    
+    def get_success_url(self):
+        return reverse('guestbook')
