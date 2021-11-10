@@ -80,6 +80,13 @@ class CreatePost(CreateView):
     template_name = "guestbook_create.html"
     success_url = "guestbook"
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreatePost, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('guestbook')
+
 
 
 class UpdatePost(UpdateView):
@@ -88,6 +95,9 @@ class UpdatePost(UpdateView):
     template_name = "guestbook_update.html"
     success_url = "guestbook"
 
+    def get_success_url(self):
+        return reverse('guestbook')
+
 
 
 # post_delete is a confirmation page!
@@ -95,6 +105,9 @@ class DeletePost(DeleteView):
     model = Post
     template_name = "guestbook_delete.html"
     success_url = "guestbook"
+
+    def get_success_url(self):
+        return reverse('guestbook')
 
 
 

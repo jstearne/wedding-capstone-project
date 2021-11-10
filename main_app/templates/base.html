@@ -66,17 +66,18 @@
         </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            
+
         <!--RSVP drop down menu inside of subnav drop down: Remove if I can't get links working later-->
+          {% if user.is_authenticated %} <!-- only show RSVP option if logged in! Otherwise error -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     RSVP</a>
                 <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
                     <li><a class="dropdown-item" href="{% url 'rsvp' user.pk %}">RSVP Status: {{ user.guest.rsvp }}</a></li>
-
                     <li><a class="dropdown-item" href="{% url 'rsvp' user.pk %}">Click to Change RSVP</a></li>
                 </ul>
             </li>
+            {% endif %}
             <!--Rest of drop-down subnav links-->
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'guestbook' %}">Guestbook</a>
