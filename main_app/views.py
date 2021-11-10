@@ -21,7 +21,7 @@ class Home(TemplateView):
 
 
 class Signup(View):
-        # show a form to fill out
+        # update with custom form for RSVP and display 'name'
     def get(self, request):
         form = UserCreationForm()
         context = {"form": form}
