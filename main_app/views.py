@@ -21,7 +21,7 @@ class Home(TemplateView):
 
 
 class Signup(View):
-        # show a form to fill out
+        # update with custom form for RSVP and display 'name'
     def get(self, request):
         form = UserCreationForm()
         context = {"form": form}
@@ -97,3 +97,12 @@ class DeletePost(DeleteView):
     success_url = "guestbook"
 
 
+
+class GuestRsvp(UpdateView):
+    model = Guest
+    fields = ["rsvp"]
+    template_name = "rsvp.html"
+    success_url = "guestbook"
+    
+    def get_success_url(self):
+        return reverse('guestbook')
