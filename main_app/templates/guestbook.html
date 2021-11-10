@@ -20,6 +20,7 @@
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
                         <p>BODY: {{ post.body }}</p>
+                        <p>Created: {{ post.created_at }}</p>
                         <footer class="blockquote-footer">POST AUTHOR: {{ post.user.guest.name }} 
                         <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
                     </blockquote>
@@ -30,15 +31,15 @@
 
 
 
-<!--TEST MODAL-->
+<!--TEST MODAL: deletes the LAST post no matter what. How the heck?-->
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     TEST DELETE
   </button>
   
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!-- Modal: Seems to have fixed problem, two classes per modal fade to allow class=targetting of object.pk -->
+  <div class="modal fade" id="staticBackdrop" class="modalDelete{{ obj.pk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -47,7 +48,7 @@
         </div>
         <div class="modal-footer">
           <!--Delete functionality-->
-          <form action="{% url 'guestbook_delete' post.pk %}" method="POST">
+          <form action="{% url 'guestbook_delete' post.pk %}" data-target=".modalDelete{{ obj.pk }}" method="POST">
             {% csrf_token %}
             <button class="btn btn-danger">Delete</button>
           </form>

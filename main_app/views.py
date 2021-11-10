@@ -88,12 +88,15 @@ class CreatePost(CreateView):
         return reverse('guestbook')
 
 
-        
+
 class UpdatePost(UpdateView):
     model = Post
     fields = ["title", "body", "image"]
     template_name = "guestbook_update.html"
     success_url = "guestbook"
+
+    def get_success_url(self):
+        return reverse('guestbook')
 
 
 
