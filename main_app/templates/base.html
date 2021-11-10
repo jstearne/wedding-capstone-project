@@ -72,9 +72,9 @@
                 <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     RSVP</a>
                 <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'rsvp' user.pk %}">RSVP: Attending!</a></li>
-                    <hr class="dropdown-divider">
-                    <li><a class="dropdown-item" href="#">Unable to Attend</a></li>
+                    <li><a class="dropdown-item" href="{% url 'rsvp' user.pk %}">RSVP Status: {{ user.guest.rsvp }}</a></li>
+
+                    <li><a class="dropdown-item" href="{% url 'rsvp' user.pk %}">Click to Change RSVP</a></li>
                 </ul>
             </li>
             <!--Rest of drop-down subnav links-->

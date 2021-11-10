@@ -13,10 +13,7 @@ urlpatterns = [
     path('accommodations/', views.Accommodations.as_view(), name="accommodations"),
     path('schedule/', views.Schedule.as_view(), name="schedule"),
     path('photos/', views.Photos.as_view(), name="photos"),
-
-    # new add, rsvp via a new template page. Must be called with object pk referencing the user
-    path('guestbook/rsvp/<int:pk>', views.GuestRsvp.as_view(), name="rsvp"),
-
+    path('guestbook/rsvp/<int:pk>', views.GuestRsvp.as_view(), name="rsvp"), # RSVP page link
     path('login/', views.Login.as_view(), name="login"),
     path('accounts/signup/', views.Signup.as_view(), name="signup"),
 ]
