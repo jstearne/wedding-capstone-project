@@ -133,28 +133,27 @@
 
 <body class="signup-page">
 
-    <h1 class="title" id="signup-title">Sign Up</h1>
+    <h1 class="title" id="signup-title">Add New Post</h1>
     <main class="form-signin">
-        <form method="post" action="{% url 'guestbook_create' %}"><!--create post form-->
+        <form method="post" action="{% url 'guestbook_create' %}"><!--create post form START-->
             {% csrf_token %}
 
             <div class="form-floating">
                 <input type="text" class="form-control" name="title" id="floatingPassword"
-                    autocomplete="new-password" required id="id_password1" placeholder="title">
+                    autocomplete="new-password" required id="id_password1" placeholder="Title">Title
             </div>
-
 
             <div class="form-floating">
                 <input type="text" class="form-control" name="body" id="floatingPassword"
-                    autocomplete="new-password" required id="id_password1" placeholder="body">
+                    autocomplete="new-password" required id="id_password1" placeholder="Message">Body
             </div>
 
-
-            <button type="submit" class="w-100 btn btn-lg btn-primary" value="Sign Up">Post</button>
+            <button type="submit" class="w-100 btn btn-lg btn-primary" value="New Post">Post</button>
             <input type="hidden" name="next" value="{{ next }}" />
 
         </form>
 
+        <!--unnecessary?-->
         <div class="signup-error" style="color: red; text-align: center;">
             {{ form.errors }}
         </div>
