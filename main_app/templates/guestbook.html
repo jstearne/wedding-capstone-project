@@ -38,7 +38,7 @@
 
 
 
-<!-- Update Modal: NOT YET WORKING-->
+<!-- UPDATE MODAL: NOT YET WORKING-->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post</button>
 <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
 <div class="modal fade" class="modalUpdate{{ obj.pk }}" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,15 +72,14 @@
     </div>
   </div>
 </div>
-<!-- Update Modal: NOT YET WORKING-->
+<!-- UPDATE MODAL: NOT YET WORKING-->
 
 
 
 
 
 
-<!--Delete Modal-->
-
+<!--DELETE MODAL-->
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Delete
@@ -116,10 +115,11 @@
         <!--END Bootstrap card-->
         {% endfor %}
         <!--END POST LOOP-->
-        </div>
+        </div><!--END LEFT COLUMN-->
 
-
-        <!--Create Post on Right side of page-->
+        <!--RIGHT COLUMN-->
+        <!--RIGHT COLUMN-->
+        <!--RIGHT COLUMN-->
         <div class="col-lg-5"> <!--Right half of page-->
 
         
@@ -153,13 +153,9 @@
 
                 </main>
             </body>
-
-<!--END HTML post create-->
-
-
-
         </div>
     </div>
+<!--END HTML post create-->
 <!--End of right column-->
     <br><br>
     <a href="{% url 'guestbook_create' %}">Leave a Message</a>
