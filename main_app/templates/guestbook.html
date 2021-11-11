@@ -13,8 +13,8 @@
 
 <!--Two column format: left is all posts, right is static post form: https://getbootstrap.com/docs/5.1/layout/columns/ -->
 <div class="container">
-    <div class="row g-3">
-        <div class="col-sm-7" > <!--Left half of page (higher number is wider)-->
+    <div class="row "  >
+        <div class="col-sm-7 " > <!--Left half of page (higher number is wider)-->
 <br><br>
 <a href="{% url 'guestbook_create' %}">Leave a Message</a><!--REMOVE WHEN SITE IS DONE-->
 <br><br>
@@ -128,7 +128,7 @@
         
 
 
-        <div class="col-sm-5"> <!--Right half of page-->
+        <div class="col-sm-5" style="position: absolute; right: 20px;" > <!--Right half of page-->
 
             <!--HTML post create HERE--><br><br>
             <body class="new-post-form"><!--ORIGINAL: <body class="signup-page">-->
