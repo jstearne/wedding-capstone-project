@@ -139,16 +139,18 @@
             {% csrf_token %}
 
             <div class="form-floating">
-                <input type="text" class="form-control" name="title" id="floatingPassword"
-                    autocomplete="new-password" required id="id_password1" placeholder="Title">Title
+                <input type="text" class="form-control" name="title" id="floatingInput"
+                    autocomplete="new-password" required id="id_password1" placeholder="Title">
+                    <label for="floatingInput">Title</label>
             </div>
 
             <div class="form-floating">
-                <input type="text" class="form-control" name="body" id="floatingPassword"
-                    autocomplete="new-password" required id="id_password1" placeholder="Message">Body
+                <input type="text" class="form-control" name="body" id="floatingInput"
+                    autocomplete="new-password" required id="id_password1" placeholder="Message">
+                    <label for="floatingInput">Message</label>
             </div>
 
-            <button type="submit" class="w-100 btn btn-lg btn-primary" value="New Post">Post</button>
+            <button type="submit" class="w-100 btn btn-lg btn-primary" value="New Post">Add New Message</button>
             <input type="hidden" name="next" value="{{ next }}" />
 
         </form>
