@@ -59,25 +59,17 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Update Message</button>
-                  <!--Delete functionality START-->
-                  <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalDelete{{ obj.pk }}" method="POST">
-                    {% csrf_token %}
-                    <button class="btn btn-danger">Edit</button>
-                  </form>
-                  <!--Delete functionality END-->
+            <!--Update functionality START-->
+            <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalUpdate{{ obj.pk }}" method="POST">
+            {% csrf_token %}
+                <button class="btn btn-primary">Update Message</button>
+            </form>
+            <!--Update functionality END-->
       </div>
     </div>
   </div>
 </div>
 
-
-          <!--Delete functionality START-->
-          <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalDelete{{ obj.pk }}" method="POST">
-            {% csrf_token %}
-            <button class="btn btn-danger">Delete</button>
-          </form>
-          <!--Delete functionality END-->
 
 
 <!-- TEST MODAL: Update-->
