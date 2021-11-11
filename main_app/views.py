@@ -91,13 +91,17 @@ class CreatePost(CreateView):
 
 class UpdatePost(UpdateView):
     model = Post
-    fields = ["title", "body", "image"]
+    fields = ["title", "body"] # no "image" for now, Icebox
     template_name = "guestbook_update.html"
-    success_url = "guestbook"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(UpdatePost, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('guestbook')
+        return redirect('guestbook')
 
+    success_url = "guestbook"
 
 
 # post_delete is a confirmation page!
