@@ -29,13 +29,60 @@
                     <br><br>
 
 
+<!-- TEST MODAL: Update-->
+
+
+
+
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Update Message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- TEST MODAL: Update-->
+
+
+
+
 
 
 <!--TEST MODAL: deletes the LAST post no matter what. How the heck?-->
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    TEST DELETE
+    Delete
   </button>
   
   <!-- Modal: Seems to have fixed problem, two classes per modal fade to allow class=targetting of object.pk -->
@@ -47,16 +94,16 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-footer">
-          <!--Delete functionality-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              </div>
+          <!--Delete functionality START-->
           <form action="{% url 'guestbook_delete' post.pk %}" data-target=".modalDelete{{ obj.pk }}" method="POST">
             {% csrf_token %}
             <button class="btn btn-danger">Delete</button>
           </form>
-          <!--Delete functionality-->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Confirm</button>
+          <!--Delete functionality END-->
+
         </div>
       </div>
     </div>
