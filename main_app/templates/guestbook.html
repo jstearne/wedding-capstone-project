@@ -2,15 +2,21 @@
 <br>
 <h3>Guestbook</h3>
 
+<!--fix the RIGHT column but keep it on the right-->
+<style>
+    .col-lg-5 {
+  position:fixed;
 
-
+  /* this is right half fixed but on left? How to fix */
+}
+</style>
 
 <!--Two column format: left is all posts, right is static post form: https://getbootstrap.com/docs/5.1/layout/columns/ -->
 <div class="container">
     <div class="row">
-        <div class="col"> <!--Left half of page-->
+        <div class="col-lg-7" > <!--Left half of page (higher number is wider)-->
 <br><br>
-<a href="{% url 'guestbook_create' %}">Leave a Message</a>
+<a href="{% url 'guestbook_create' %}">Leave a Message</a><!--REMOVE WHEN SITE IS DONE-->
 <br><br>
     <!--POST LOOP-->
         {% for post in posts %}
@@ -24,18 +30,15 @@
                         <footer class="blockquote-footer">POST AUTHOR: {{ post.user.guest.name }} 
                         <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
                     </blockquote>
-                    <a href="{% url 'guestbook_update' post.pk %}">Edit</a>&nbsp; &nbsp; 
-                    <a href="{% url 'guestbook_delete' post.pk %}">Delete</a>
+                    <a href="{% url 'guestbook_update' post.pk %}">Edit (Page)</a>&nbsp; &nbsp; 
+                    <a href="{% url 'guestbook_delete' post.pk %}">Delete (Page)</a>
                     <br><br>
 
 
-<!-- TEST MODAL: Update-->
 
 
 
-
-
-
+<!-- Update Modal: NOT YET WORKING-->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post</button>
 <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
 <div class="modal fade" class="modalUpdate{{ obj.pk }}" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -69,17 +72,14 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- TEST MODAL: Update-->
+<!-- Update Modal: NOT YET WORKING-->
 
 
 
 
 
 
-<!--TEST MODAL: deletes the LAST post no matter what. How the heck?-->
+<!--Delete Modal-->
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -108,63 +108,51 @@
       </div>
     </div>
   </div>
-<!--TEST MODAL-->
+<!--Delete Modal-->
 
 
                 </div>
-            </div>
+            </div><br>
         <!--END Bootstrap card-->
         {% endfor %}
         <!--END POST LOOP-->
         </div>
 
+
         <!--Create Post on Right side of page-->
-        <div class="col"> <!--Right half of page-->
-            <br>
-            This is the right side of the page!<br>
-            <br>
-            <br>
+        <div class="col-lg-5"> <!--Right half of page-->
 
+        
 
+            <!--HTML post create HERE--><br><br>
+            <body class="new-post-form"><!--ORIGINAL: <body class="signup-page">-->
+                <h5 class="title" style="text-align: center;" id="signup-title">Add Message to Guestbook</h5>
+                <main class="form-signin">
+                    <form method="post" action="{% url 'guestbook_create' %}"><!--create post form START-->
+                        {% csrf_token %}
+                    <!--New Post form: TITLE FIELD-->
+                        <div class="form-floating">
+                            <input type="text" class="form-control" name="title" id="floatingInput" required id="new_title" placeholder="Title">
+                                <label for="floatingInput">Title</label>
+                        </div>
+                    <!--New Post form: BODY FIELD-->
+                        <div class="form-floating">
+                            <input type="text" class="form-control" name="body" id="floatingInput" required id="new_body" placeholder="Message">
+                                <label for="floatingInput">Message</label>
+                        </div>
+                    <!--Submit New Post Form-->
+                        <button type="submit" class="w-100 btn btn-lg btn-primary" value="New Post">Add New Message</button>
+                        <input type="hidden" name="next" value="{{ next }}" />
 
-<!--Try HTML post create HERE-->
+                    </form>
 
+                    <!--unnecessary?-->
+                    <div class="signup-error" style="color: red; text-align: center;">
+                        {{ form.errors }}
+                    </div>
 
-
-<body class="signup-page">
-
-    <h1 class="title" id="signup-title">Add New Post</h1>
-    <main class="form-signin">
-        <form method="post" action="{% url 'guestbook_create' %}"><!--create post form START-->
-            {% csrf_token %}
-
-            <div class="form-floating">
-                <input type="text" class="form-control" name="title" id="floatingInput"
-                    autocomplete="new-password" required id="id_password1" placeholder="Title">
-                    <label for="floatingInput">Title</label>
-            </div>
-
-            <div class="form-floating">
-                <input type="text" class="form-control" name="body" id="floatingInput"
-                    autocomplete="new-password" required id="id_password1" placeholder="Message">
-                    <label for="floatingInput">Message</label>
-            </div>
-
-            <button type="submit" class="w-100 btn btn-lg btn-primary" value="New Post">Add New Message</button>
-            <input type="hidden" name="next" value="{{ next }}" />
-
-        </form>
-
-        <!--unnecessary?-->
-        <div class="signup-error" style="color: red; text-align: center;">
-            {{ form.errors }}
-        </div>
-
-    </main>
-</body>
-
-
-
+                </main>
+            </body>
 
 <!--END HTML post create-->
 
