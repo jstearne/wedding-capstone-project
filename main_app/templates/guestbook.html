@@ -57,7 +57,7 @@
                     <blockquote class="blockquote mb-0">
                         <p>BODY: {{ post.body }}</p>
                         <p>Created: {{ post.created_at }}</p>
-                        <footer class="blockquote-footer">POST AUTHOR: {{ post.user.guest.name }} 
+                        <footer class="blockquote-footer">From: {{ post.user.guest.name }} 
                         <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
                     </blockquote>
                         <a href="{% url 'guestbook_update' post.pk %}">Edit (Page)</a>&nbsp; &nbsp; 
