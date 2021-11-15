@@ -1,13 +1,21 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 style=" font-family: 'Pinyon Script', cursive; font-size:xxx-large;">Guestbook</h1>
+<h1 style=" font-family: 'Pinyon Script', cursive; font-size: 10vw;">Guestbook</h1>
 
 <!--POST CREATE GOES HERE-->
 <!--POST CREATE GOES HERE-->
+
+<style>
+
+.container-sm{
+    margin-top:-48px;
+}
+</style>
+
 <div class="container-sm">
     <!--HTML post create HERE--><br><br>
     <body class="new-post-form"><!--ORIGINAL: <body class="signup-page">-->
-        <h5 class="title" style="text-align: center;" id="signup-title">Add Message to Guestbook</h5>
+        <h5 class="title" style="text-align: center; font-weight: lighter;" id="signup-title">Add Message to Guestbook</h5>
         <main class="form-signin">
             <form method="post" action="{% url 'guestbook_create' %}"><!--create post form START-->
                 {% csrf_token %}
