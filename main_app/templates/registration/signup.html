@@ -10,7 +10,8 @@
   }
 </style>
 <!--Form takes up entire screen outside of NAV-->
-<form method="post" action="{% url 'signup' %}"><br>
+<form method="post" action="{% url 'signup' %}">
+  <br>
 <h1 class="title">Sign Up</h1>
 
   {% csrf_token %} {{ form.as_p }}
@@ -26,7 +27,21 @@
         </div>
     </div>
   </div>
-  <br><br><br><br><br><br><br><br>
+  <br>
+  <!--Redundancy: go to login instead-->
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div  class="text-center">
+              <a href="{% url 'login' %}">
+                <button type="button" class="btn btn-secondary btn-sm">To Login Page (returning user)</button>
+              </a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--End alternate button-->
+  <br><br><br>
 </form>
 
 {% endblock %}
