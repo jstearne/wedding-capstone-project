@@ -1,9 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 
+<style>
+  p {
+    color: darkgreen;
+  }
+  form {
+    color: darkgreen;
+    background-color: darkgray;
+  }
+</style>
+<!--Form takes up entire screen outside of NAV-->
+<form method="post" action="{% url 'signup' %}"><br>
 <h1 class="title">Sign Up</h1>
-<form method="post" action="{% url 'signup' %}">
-  {% csrf_token %} {{ form.as_p }}
 
+  {% csrf_token %} {{ form.as_p }}
 
 <!-- styled button -->
   <div class="container">
@@ -16,6 +26,7 @@
         </div>
     </div>
   </div>
+  <br><br><br><br><br><br><br><br>
 </form>
 
 {% endblock %}

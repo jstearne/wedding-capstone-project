@@ -1,7 +1,20 @@
 {% extends 'base.html' %} {% block content %}
 
+<style>
+  p {
+    color: darkgreen;
+  }
+  form {
+    color: darkgreen;
+    background-color: darkgray;
+  }
+</style>
+
+
+
+<form method="post" action="{% url 'login' %}"><br>
 <h1 class="title">Log In</h1>
-<form method="post" action="{% url 'login' %}">
+
   {% csrf_token %} {{ form.as_p }}
 
 <!-- styled button -->
@@ -15,6 +28,7 @@
         </div>
     </div>
   </div>
+  <br><br><br><br><br><br><br><br><br>
 </form>
 
 {% endblock %}
