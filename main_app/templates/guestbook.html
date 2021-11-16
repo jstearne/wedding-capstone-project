@@ -49,7 +49,7 @@
 <!--ALL POSTS LOOP HERE-->
 <!--ALL POSTS LOOP HERE-->
 <div class="container-lg">
-    {% for post in posts %}
+    {% for post in posts reversed %}
         <!--Bootstrap card for every post in DB-->
         <div class="card">
             <div class="card-header">TITLE TEXT HERE: {{ post.title }}</div>
@@ -61,8 +61,8 @@
                         <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
                     </blockquote>
                     <!--These WORK if I can't get update modal working by Wednesday!-->
-                        <a href="{% url 'guestbook_update' post.pk %}">Edit (Page)</a>&nbsp; &nbsp; 
-                        <a href="{% url 'guestbook_delete' post.pk %}">Delete (Page)</a>
+                        <a href="{% url 'guestbook_update' post.pk %}">Edit (works)</a>&nbsp; &nbsp; 
+                        <a href="{% url 'guestbook_delete' post.pk %}">Delete (can remove)</a>
                         <br><br>
                         <!--POST BODY END-->
 
@@ -93,7 +93,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                             <!--Update functionality START-->
-                                            <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalUpdate{{ obj.pk }}" method="POST">
+                                            <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalUpdate{{ post.pk }}" method="POST">
                                             {% csrf_token %}
                                                 <button class="btn btn-primary">Update Message</button><!--this just links to the update.html page, how to submit changes?-->
                                             </form>
@@ -105,7 +105,7 @@
                         <!-- UPDATE MODAL: NOT YET WORKING-->
 
 
-                        <!--DELETE MODAL-->
+                        <!--DELETE MODAL: this works!-->
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><!-- Button trigger modal -->
                             Delete
                         </button>  
@@ -166,22 +166,6 @@
     </div>
 </div>
 <br><br><br><br>
-
-Syntax reminders...<br>
-
-Currently logged in user: "{user.username}"" = "{ user.username }" <br>
-
-Currently logged in user RSVPD?: "{user.guest.rsvp}" = "{ user.guest.rsvp }"<br>
-
-Original post author: "{ post.user.username }" <br>
-
-Original post author RSVP: "{ post.user.guest.rsvp }"
-
-I may need to add an author-field to posts to get 'post-author'...
-
-
-
-
 
 {% endblock %} 
 
