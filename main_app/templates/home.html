@@ -5,5 +5,15 @@
 
 <!-- Modal signup/signin forms on page -->
 
+<div class="navbar-menu navbar-end">
+    &nbsp;&nbsp;<a class="navbar-item" href="{% url 'login' %}">Log In</a>
+    <!--   here is our new link      -->
+    &nbsp;&nbsp;<a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
+</div>
+
+
+
+<button type="submit" class="w-100 btn btn-lg btn btn-success" value="New Post">Log In (returning user)</button>
+                <input type="hidden" name="next" value="{{ next }}" />
 
 {% endblock %} 
