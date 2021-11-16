@@ -15,7 +15,7 @@
 <div class="container-sm">
     <!--HTML post create HERE--><br><br>
     <body class="new-post-form"><!--ORIGINAL: <body class="signup-page">-->
-        <h5 class="title" style="text-align: center; font-weight: lighter;" id="signup-title">Add Message to Guestbook</h5>
+        <h5 class="title" style="text-align: center; font-weight: lighter; color: white; font-weight: bolder;" id="signup-title">Add Message to Guestbook</h5>
         <main class="form-signin">
             <form method="post" action="{% url 'guestbook_create' %}"><!--create post form START-->
                 {% csrf_token %}
@@ -36,7 +36,7 @@
             </form>
 
             <!--unnecessary?-->
-            <div class="signup-error" style="color: red; text-align: center;">
+            <div class="signup-error" style="color: darkgreen; text-align: center;">
                 {{ form.errors }}
             </div>
 
@@ -94,7 +94,7 @@
                                             <!--Update functionality START-->
                                             <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalUpdate{{ obj.pk }}" method="POST">
                                             {% csrf_token %}
-                                                <button class="btn btn-primary">Update Message</button>
+                                                <button class="btn btn-primary">Update Message</button><!--this just links to the update.html page, how to submit changes?-->
                                             </form>
                                             <!--Update functionality END-->
                                     </div>
