@@ -68,14 +68,24 @@
 
 
 
+
+
+
+
+
+
+
+
+<!--Make modal update send text to form and auto submit, like signup or create modal-->
+
                         <!-- UPDATE MODAL: NOT YET WORKING-->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post Button</button>
                         <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
                         <div class="modal fade" class="modalUpdate{{ obj.pk }}" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Update Message</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal: Update Form</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -95,7 +105,7 @@
                                             <!--Update functionality START-->
                                             <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalUpdate{{ post.pk }}" method="POST">
                                             {% csrf_token %}
-                                                <button class="btn btn-primary">Update Message</button><!--this just links to the update.html page, how to submit changes?-->
+                                                <button class="btn btn-primary">Modal: Update Button</button><!--this just links to the update.html page, how to submit changes?-->
                                             </form>
                                             <!--Update functionality END-->
                                     </div>
@@ -103,6 +113,24 @@
                             </div>
                         </div>
                         <!-- UPDATE MODAL: NOT YET WORKING-->
+
+
+<!--REFERENCE INFORMATION
+
+
+
+-->
+
+<!--END Make modal update send text to form and auto submit, like signup or create modal-->
+
+
+
+
+
+
+
+
+
 
 
                         <!--DELETE MODAL: this works!-->
