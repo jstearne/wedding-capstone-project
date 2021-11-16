@@ -28,7 +28,21 @@
         </div>
     </div>
   </div>
-  <br><br><br><br><br><br><br><br><br>
+  <br>
+  <!--Redundancy: go to signup instead-->
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div  class="text-center">
+              <a href="{% url 'signup' %}">
+                <button type="button" class="btn btn-secondary btn-sm">To Signup Page (new user)</button>
+              </a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--End alternate button-->
+  <br><br><br>
 </form>
 
 {% endblock %}
