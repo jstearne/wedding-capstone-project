@@ -1,10 +1,34 @@
 {% extends 'base.html' %} {% block content %}
 
+<style>
+  p {
+    color: darkgreen;
+  }
+  form {
+    color: darkgreen;
+    background-color: darkgray;
+  }
+</style>
+
+
+
+<form method="post" action="{% url 'login' %}"><br>
 <h1 class="title">Log In</h1>
-<form method="post" action="{% url 'login' %}">
+
   {% csrf_token %} {{ form.as_p }}
-  <input type="submit" class="btn" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
+
+<!-- styled button -->
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div  class="text-center">
+              <input type="submit" class="w-100 btn-lg btn btn-success" value="login" />
+              <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </div>
+    </div>
+  </div>
+  <br><br><br><br><br><br><br><br><br>
 </form>
 
 {% endblock %}

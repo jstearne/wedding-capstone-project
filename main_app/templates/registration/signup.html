@@ -1,10 +1,32 @@
 {% extends 'base.html' %} {% block content %}
 
+<style>
+  p {
+    color: darkgreen;
+  }
+  form {
+    color: darkgreen;
+    background-color: darkgray;
+  }
+</style>
+<!--Form takes up entire screen outside of NAV-->
+<form method="post" action="{% url 'signup' %}"><br>
 <h1 class="title">Sign Up</h1>
-<form method="post" action="{% url 'signup' %}">
+
   {% csrf_token %} {{ form.as_p }}
-  <input type="submit" class="btn" value="Sign Up" />
-  <input type="hidden" name="next" value="{{ next }}" />
+
+<!-- styled button -->
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div  class="text-center">
+              <input type="submit" class="w-100 btn btn-success" value="Sign Up" />
+              <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </div>
+    </div>
+  </div>
+  <br><br><br><br><br><br><br><br>
 </form>
 
 {% endblock %}

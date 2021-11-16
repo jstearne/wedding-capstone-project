@@ -3,7 +3,27 @@
 <h1 class="title">Login or<br>Sign Up</h1>
 
 
-<!-- Modal signup/signin forms on page -->
+<!--Side-by-side login/signup buttons. ICEBOX replace with modal-->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div  class="text-center">
+            <!--LOGIN-->
+                <a href="{% url 'login' %}">
+                    <button type="submit" class=".col-6 w-40 btn btn-lg btn btn-success">
+                        Log In (returning user)
+                    </button></a>
 
+            <!--SIGNIN-->
+                <a href="{% url 'signup' %}">
+                    <button type="submit" class=".col-6 w-40 btn btn-lg btn btn-secondary">
+                        Sign Up (first time)
+                    </button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal signup/signin forms on page -->
 
 {% endblock %} 
