@@ -7,16 +7,16 @@ from django.db.models.signals import post_save
 # from django.forms import ModelForm
 
 RSVP_CHOICES = [
-    ('Absolutely!', 'Absolutely!'),
-    ('Not quite certain', 'Not quite certain'),
-    ('Unfortunately, no...', 'Unfortunately, no...'),
+    ('Yes!', 'Yes!'),
+    ('Unsure', 'Unsure'),
+    ('No', 'No'),
 ]
 
 # Create your models here.
 class Guest(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=256, default='anonymous')
-    rsvp = models.CharField(max_length=30, choices=RSVP_CHOICES) 
+    rsvp = models.CharField(max_length=30, choices=RSVP_CHOICES, default="Unsure") 
     # should allow user a 3 options instead of BOOL
     def __str__(self): # django-admin: what Guests show up as. Most things cause errors...?
         return self.name

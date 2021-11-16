@@ -1,10 +1,37 @@
 {% extends 'base.html' %} {% block content %}
 
+<style>
+  p {
+    color: darkgreen;
+    text-align: center;
+  }
+  form {
+    color: darkgreen;
+    background-color: darkgray;
+  }
+</style>
 
-<h1 class="pt-3">Update R.S.V.P. </h1>
-Current: {{user.guest.rsvp}}
-<form action="" method="post">
-  {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+
+
+<form action="" method="post"><br><br>
+  <h1 class="pt-3">Update R.S.V.P. </h1>
+  <p>
+    Current: {{user.guest.rsvp}}
+  </p>
+
+  {% csrf_token %} {{form.as_p}} 
+  
+  <!-- styled button -->
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div  class="text-center">
+              <input type="submit" class="w-100 btn btn-success" value="Submit" />
+            </div>
+        </div>
+    </div>
+  </div>
+<br><br><br><br>
 </form>
 
 
