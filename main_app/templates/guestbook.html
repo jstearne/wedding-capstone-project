@@ -12,6 +12,7 @@
 }
 </style>
 
+<!--NEW POST FORM-->
 <div class="container-sm">
     <!--HTML post create HERE--><br><br>
     <body class="new-post-form"><!--ORIGINAL: <body class="signup-page">-->
@@ -32,14 +33,11 @@
             <!--Submit New Post Form-->
                 <button type="submit" class="w-100 btn btn-lg btn btn-success" value="New Post">Add New Message</button>
                 <input type="hidden" name="next" value="{{ next }}" />
-
             </form>
-
             <!--unnecessary?-->
             <div class="signup-error" style="color: darkgreen; text-align: center;">
                 {{ form.errors }}
             </div>
-
         </main>
     </body>
 </div>
@@ -49,11 +47,12 @@
 
 <!--ALL POSTS LOOP HERE-->
 <!--ALL POSTS LOOP HERE-->
+
 <div class="container-lg">
     {% for post in posts reversed %}
-        <!--Bootstrap card for every post in DB, in order of most recent to oldest-->
+    <!--Bootstrap card for every post in DB, in order of most recent to oldest-->
     <div class="card">
-        <div class="card-header">TITLE TEXT HERE: {{ post.title }}</div>
+        <div class="card-header">TITLE TEXT HERE: {{ post.title }}
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
                     <p>BODY TEXT HERE: {{ post.body }}</p>
@@ -62,108 +61,29 @@
                     <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
                 </blockquote>
 
-
-                {% if user.is_authenticated and user == post.user %} 
-
-                <!-- UPDATE MODAL: Works, but doesn't show original post content-->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post Button</button>
-                        <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
-                        <div class="modal fade" class="modalUpdate{{ obj.pk }}" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal: Update Post</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!--END MODAL SETUP-->
-                                        <!--THIS UPDATES THE CORRECT POST I THINK-->
-                                        <div class="container-sm">
-                                            <!--HTML post create HERE--><br><br>
-                                            <body class="new-post-form"><!--ORIGINAL: <body class="signup-page">-->
-                                                <h5 class="title" style="text-align: center; font-weight: lighter; color: white; font-weight: bolder;" id="signup-title">EDIT Message to Guestbook</h5>
-                                                <main class="form-signin">
-                                                    <form method="post" action="{% url 'guestbook_update' post.pk %}"><!--create post form START-->
-                                                        {% csrf_token %}
-                                                    <!--EDIT TITLE FIELD-->
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" name="title" id="floatingInput" required id="new_title" placeholder="Title">
-                                                                <label for="floatingInput">Title</label>
-                                                        </div>
-                                                    <!--EDIT BODY FIELD-->
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" name="body" id="floatingInput" required id="new_body" placeholder="Message">
-                                                                <label for="floatingInput">Message</label>
-                                                        </div>
-                                                        <!--Align buttons in center-->
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div  class="text-center">
-                                                                        <div class="modal-footer">
-                                                                        <!--CANCEL modal-->    
-                                                                            <button type="button" class="w-60 btn btn-secondary" data-bs-dismiss="modal">Cancel (Modal)</button>
-
-                                                                        <!--UPDATE Button-->
-                                                                            <button type="submit" class="w-60 btn  btn-success" value="New Post">Update Post</button>
-                                                                            <input type="hidden" name="next" value="{{ next }}" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>           
-                                                    </form>
-                                                    <!--unnecessary?-->
-                                                    <div class="signup-error" style="color: darkgreen; text-align: center;">
-                                                        {{ form.errors }}
-                                                    </div>
-                                                </main>
-                                            </body>
-                                        </div>
-                                    </div>                                     
-                                </div>
-                            </div>
-                        </div>
-            {% endif %}
-
-<div class="buttons">
-    <!-- just like how we added the artist detail link we can do the same thing for update -->
-    <a href="" class="button is-info">
-      <span class="icon">
-        <i class="fas fa-edit"></i>
-      </span>
-    </a>
-    {% if user.is_authenticated and user == post.user %} <!--only post author can edit!--><!--THIS UPDATES and targets post correctly-->
-    <a href="{% url 'guestbook_update' post.pk %}" class="button btn-primary">EDIT (only author can see!)
-      <span class="icon">
-        <i class="fas fa-trash-alt"></i>
-      </span>
-    </a>
-<!--only post author can delete!-->
-    <a href="{% url 'guestbook_delete' post.pk %}" class="button btn-warning">DELETE (only author can see!)
-        <span class="icon">
-        <i class="fas fa-trash-alt"></i>
-        </span>
-    </a>
-
-    {% endif %}
-  </div>
-
-
-
-
-
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <!--Delete Modal-->
-                    </div>
-    </div><br><!--breathing room between each post-->      
-<!--END Bootstrap card-->
+                    {% if user.is_authenticated and user == post.user %} 
+                    <button> 
+                        <a href="{% url 'guestbook_update' post.pk %}" class="button btn-primary">EDIT (only author can see!)
+                            <span class="icon">
+                            <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </a>
+                    </button>
+                        <!--only post author can delete!-->
+                    <button>
+                        <a href="{% url 'guestbook_delete' post.pk %}" class="button btn-warning">DELETE (only author can see!)
+                            <span class="icon">
+                            <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </a>
+                    </button>
+                    {% endif %}
+            </div>
+        </div>
+    </div>                                     
+</div>
+    <br><!--breathing room between each post-->      
+    <!--END Bootstrap card-->
     {% endfor %}
 <!--END POST LOOP-->
        
@@ -196,4 +116,10 @@
 <br><br><br><br>
 
 {% endblock %} 
+
+
+
+
+
+
 
