@@ -13,8 +13,8 @@
 </style>
 
 
-
-<form action="" method="post"><br><br>
+<!--Added form action...test-->
+<form action="{% url 'rsvp' user.guest.pk %}" method="post"><br><br>
   <h1 class="pt-3"> R.S.V.P. </h1>
   <p>
     Currently: {{user.guest.rsvp}}

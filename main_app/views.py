@@ -115,12 +115,15 @@ class DeletePost(DeleteView):
         return reverse('guestbook')
 
 
-
 class GuestRsvp(UpdateView):
     model = Guest
     fields = ["rsvp"]
     template_name = "rsvp.html"
     success_url = "guestbook"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
     
     def get_success_url(self):
         return reverse('guestbook')
