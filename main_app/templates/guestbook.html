@@ -10,6 +10,9 @@
 .container-sm{
     margin-top:-48px;
 }
+small {
+    font-size: small;
+}
 </style>
 
 <!--NEW POST FORM-->
@@ -48,17 +51,19 @@
 <!--ALL POSTS LOOP HERE-->
 <!--ALL POSTS LOOP HERE-->
 
-<div class="container-lg">
+<div class="container-md">
     {% for post in posts reversed %}
     <!--Bootstrap card for every post in DB, in order of most recent to oldest-->
         <div class="card border-success mb-3">
-            <div class="card-header">TITLE TEXT HERE: {{ post.title }}
+            <div class="card-header">{{ post.title }}
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                        <p>BODY TEXT HERE: {{ post.body }}</p>
-                        <p>Created: {{ post.created_at }}</p><!--Switch FROM and CREATED AT, the from should have more emphasis-->
-                        <footer class="blockquote-footer">From: {{ post.user.username }} 
-                        <cite title="Source Title">( RSVP: {{post.user.guest.rsvp}} )</cite></footer>
+                        <p>{{ post.body }}</p>
+                        <!--linebreak--><hr/>
+                        <p>from: {{ post.user.username }}</p><!--Switch FROM and CREATED AT, the from should have more emphasis-->
+                        <footer class="blockquote-footer">RSVP: {{post.user.guest.rsvp}}</footer>   
+                        <cite title="Source Title"><small>{{ post.created_at }}</small>
+                        </cite>
                     </blockquote>
 
                     {% if user.is_authenticated and user == post.user %} 
@@ -67,7 +72,6 @@
                             <a href="{% url 'guestbook_update' post.pk %}">
                                 <button type="button" class="btn btn-primary btn-sm">Update</button>
                             </a>
-
 
                         <!--only post author can delete!-->
                         <a href="{% url 'guestbook_delete' post.pk %}">
@@ -82,18 +86,7 @@
 <!--breathing room between each post-->      
 <!--END Bootstrap card-->
 <!--END POST LOOP-->
-       
-
-
-
-<!--Redundancy for testing purposes-->
-<br>
-<a href="{% url 'guestbook_create' %}">Leave a Message</a>
-<br><br>
-<hr class="solid">
-</div>
 <!--END OF GUESTBOOK 'CONTAINER'-->
-
 
 <!-- styled button: BACK TO TOP -->
 <div class="container">
