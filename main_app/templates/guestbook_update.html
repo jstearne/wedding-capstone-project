@@ -1,10 +1,36 @@
 {% extends 'base.html' %} {% block content %}
 
-
 <h1 class="pt-3">Update Message</h1>
 
-<form action="" method="post">
-  {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+          <div  class="text-center">
+            <!--Simple form: title/body-->
+            <form action="" method="post">
+              {% csrf_token %} {{form.as_p}} 
+          </div>
+      </div>
+  </div>
+</div>
+<br>
+<!--container for positioning submit and cancel buttons-->
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div  class="text-center">
+              <!--Action buttons: cancel, submit-->
+              <a href="{% url 'guestbook' %}">
+                <button type="button" class="w-60 btn btn-lg btn-secondary">Go Back</button>
+              </a>
+              <!--Most users are right-handed, primary should go on the right!-->
+              <button class="w-60 btn btn-lg btn-success" type="submit" value="Submit">Update Post</button>
+          </div>
+      </div>
+  </div>
+</div>
+<br><br><br><br><br>
 </form>
 
 

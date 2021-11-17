@@ -123,7 +123,7 @@
       </span>
     </a>
     {% if user.is_authenticated and user == post.user %} <!--only post author can edit/delete!-->
-    <a href="{% url 'guestbook_update' post.pk %}" class="button btn-warning">EDIT
+    <a href="{% url 'guestbook_update' post.pk %}" class="button btn-warning">EDIT (only author can see!)
       <span class="icon">
         <i class="fas fa-trash-alt"></i>
       </span>

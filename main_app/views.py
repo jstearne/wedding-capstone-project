@@ -94,10 +94,10 @@ class UpdatePost(UpdateView):
     fields = ["title", "body"] # no "image" for now, Icebox
     template_name = "guestbook_update.html"
 
-# TEST FORM
-    # def form_valid(self, form):
-    #     form.instance.user = self.request.user
-    #     return super().form_valid(form)
+# What fills out the edit form on guestbook_update.html? Not this
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('guestbook')
