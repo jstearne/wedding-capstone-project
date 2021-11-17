@@ -127,3 +127,10 @@ class GuestRsvp(UpdateView):
     
     def get_success_url(self):
         return reverse('guestbook')
+
+
+# Error handling!
+def error_404(request, exception):
+    data = {}
+    return render(request, 'main_app/templates/404.html', data)
+

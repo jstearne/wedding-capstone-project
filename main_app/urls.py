@@ -16,4 +16,5 @@ urlpatterns = [
     path('guestbook/rsvp/<int:pk>', views.GuestRsvp.as_view(), name="rsvp"), # RSVP page link
     path('login/', views.Login.as_view(), name="login"),
     path('accounts/signup/', views.Signup.as_view(), name="signup"),
+    # Django includes 400, 403, 404 and 500 error views!
 ]

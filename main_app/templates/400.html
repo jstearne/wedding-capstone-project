@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+
+<style>
+  p {
+    color: darkgreen;
+    text-align: center;
+  }
+  form {
+    color: darkgreen;
+    background-color: darkgray;
+    height: 100vh;
+    text-shadow: 1px 1px 1px white,
+               2px 2px 1px black;
+  }
+</style>
+
+<form>
+<br><br><br>
+<!--400 ERROR message-->
+<h5 class="title" style="text-align: center; font-weight: lighter; color: darkgreen; font-weight: bolder;" id="signup-title">
+    ERROR! Bad request: it's not you, it's me. <br><br>
+
+    Press back in your browser, or try a different link.
+</h5>
+</form>
+
+
+{% endblock %}
+
