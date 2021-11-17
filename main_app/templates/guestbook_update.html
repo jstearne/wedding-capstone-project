@@ -8,8 +8,36 @@
       <div class="col-xs-12">
           <div  class="text-center">
             <!--Simple form: title/body-->
-            <form action="" method="post">
-              {% csrf_token %} {{form.as_p}} 
+            <form action=" {% url 'guestbook_update' post.pk %} " method="post">
+              {% csrf_token %} <!-- {{form.as_p}} 
+              
+                TEST MODAL
+              -->
+
+
+              <form method="post" action="{% url 'guestbook_update' post.pk %}"><!--create post form START-->
+                {% csrf_token %} 
+            <!--New Post form: TITLE FIELD-->
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="title" id="floatingInput" required id="edit_title" placeholder="Title">
+                        <label for="floatingInput">Title</label>
+                </div>
+            <!--New Post form: BODY FIELD-->
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="body" id="floatingInput" required id="edit_body" placeholder="Message">
+                        <label for="floatingInput">Message</label>
+                </div>
+            <!--Submit New Post Form-->
+                <button type="submit" class="w-100 btn btn-lg btn btn-success" value="New Post">Edit Message</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+
+
+
+
+
+
+
+
           </div>
       </div>
   </div>

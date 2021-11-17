@@ -44,41 +44,30 @@
     </body>
 </div>
 <!--END POST CREATE-->
-<br>
-<br>
+
+<br><br>
+
 <!--ALL POSTS LOOP HERE-->
 <!--ALL POSTS LOOP HERE-->
 <div class="container-lg">
     {% for post in posts reversed %}
-        <!--Bootstrap card for every post in DB-->
-        <div class="card">
-            <div class="card-header">TITLE TEXT HERE: {{ post.title }}</div>
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p>BODY TEXT HERE: {{ post.body }}</p>
-                        <p>Created: {{ post.created_at }}</p>
-                        <footer class="blockquote-footer">From: {{ post.user.guest.name }} 
-                        <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
-                    </blockquote>
-                    <!--These WORK if I can't get update modal working by Wednesday!-->
-                        <a href="{% url 'guestbook_update' post.pk %}">Edit (works)</a>&nbsp; &nbsp; 
-                        <a href="{% url 'guestbook_delete' post.pk %}">Delete (can remove)</a>
-                        <br><br>
-                        <!--POST BODY END-->
-
-
-
-
-
-
-
+        <!--Bootstrap card for every post in DB, in order of most recent to oldest-->
+    <div class="card">
+        <div class="card-header">TITLE TEXT HERE: {{ post.title }}</div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>BODY TEXT HERE: {{ post.body }}</p>
+                    <p>Created: {{ post.created_at }}</p>
+                    <footer class="blockquote-footer">From: {{ post.user.guest.name }} 
+                    <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
+                </blockquote>
 
 
 
 
 <!--Make modal update send text to form and auto submit, like signup or create modal-->
 
-                        <!-- UPDATE MODAL: NOT YET WORKING-->
+                        <!-- UPDATE MODAL: Works, but doesn't show original post content-->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post Button</button>
                         <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
                         <div class="modal fade" class="modalUpdate{{ obj.pk }}" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,30 +78,39 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="recipient-name" class="col-form-label">Title:</label>
-                                                <input type="text" class="form-control" id="recipient-name">
+                                        <!--MODAL EDIT: works, but it isn't pulling previous post!-->
+                                        <form method="post" action="{% url 'guestbook_update' post.pk %}"><!--create post form START-->
+                                            {% csrf_token %} 
+                                        <!--EDIT Post: Title-->
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" name="title" id="floatingInput" required id="edit_title" placeholder="Title">
+                                                    <label for="floatingInput">Title</label>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Message:</label>
-                                                <textarea class="form-control" id="message-text"></textarea>
+                                        <!--EDIT Post: Body-->
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" name="body" id="floatingInput" required id="edit_body" placeholder="Message">
+                                                    <label for="floatingInput">Message</label>
                                             </div>
-                                        </form>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <!--Update functionality START-->
-                                            <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalUpdate{{ post.pk }}" method="POST">
-                                            {% csrf_token %}
-                                                <button class="btn btn-primary">Modal: Update Button</button><!--this just links to the update.html page, how to submit changes?-->
-                                            </form>
-                                            <!--Update functionality END-->
+                                    <!--Bottom of the Modal (action buttons only)-->
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div  class="text-center">
+                                                    <div class="modal-footer">
+                                                    <!--CANCEL modal-->    
+                                                        <button type="button" class="w-60 btn btn-secondary" data-bs-dismiss="modal">Cancel (Modal)</button>
+                                                    <!--Submit Button-->
+                                                        <button type="submit" class="w-60 btn btn-success" value="New Post">Edit Message</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
 <!--TEMP-->
 
 <div class="buttons">
