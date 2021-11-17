@@ -63,55 +63,68 @@
                 </blockquote>
 
 
+                {% if user.is_authenticated and user == post.user %} 
 
-
-<!--Make modal update send text to form and auto submit, like signup or create modal-->
-
-                        <!-- UPDATE MODAL: Works, but doesn't show original post content-->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post Button</button>
+                <!-- UPDATE MODAL: Works, but doesn't show original post content-->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post Button</button>
                         <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
                         <div class="modal fade" class="modalUpdate{{ obj.pk }}" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal: Update Form</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal: Update Post</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <!--MODAL EDIT: works, but it isn't pulling previous post!-->
-                                        <form method="post" action="{% url 'guestbook_update' post.pk %}"><!--create post form START-->
-                                            {% csrf_token %} 
-                                        <!--EDIT Post: Title-->
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" name="title" id="floatingInput" required id="edit_title" placeholder="Title">
-                                                    <label for="floatingInput">Title</label>
-                                            </div>
-                                        <!--EDIT Post: Body-->
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" name="body" id="floatingInput" required id="edit_body" placeholder="Message">
-                                                    <label for="floatingInput">Message</label>
-                                            </div>
-                                    </div>
-                                    <!--Bottom of the Modal (action buttons only)-->
+                                        <!--END MODAL SETUP-->
+                                        <!--THIS UPDATES THE CORRECT POST I THINK-->
+                                        <div class="container-sm">
+                                            <!--HTML post create HERE--><br><br>
+                                            <body class="new-post-form"><!--ORIGINAL: <body class="signup-page">-->
+                                                <h5 class="title" style="text-align: center; font-weight: lighter; color: white; font-weight: bolder;" id="signup-title">EDIT Message to Guestbook</h5>
+                                                <main class="form-signin">
+                                                    <form method="post" action="{% url 'guestbook_update' post.pk %}"><!--create post form START-->
+                                                        {% csrf_token %}
+                                                    <!--EDIT TITLE FIELD-->
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" name="title" id="floatingInput" required id="new_title" placeholder="Title">
+                                                                <label for="floatingInput">Title</label>
+                                                        </div>
+                                                    <!--EDIT BODY FIELD-->
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" name="body" id="floatingInput" required id="new_body" placeholder="Message">
+                                                                <label for="floatingInput">Message</label>
+                                                        </div>
+                                                        <!--Align buttons in center-->
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div  class="text-center">
+                                                                        <div class="modal-footer">
+                                                                        <!--CANCEL modal-->    
+                                                                            <button type="button" class="w-60 btn btn-secondary" data-bs-dismiss="modal">Cancel (Modal)</button>
 
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div  class="text-center">
-                                                    <div class="modal-footer">
-                                                    <!--CANCEL modal-->    
-                                                        <button type="button" class="w-60 btn btn-secondary" data-bs-dismiss="modal">Cancel (Modal)</button>
-                                                    <!--Submit Button-->
-                                                        <button type="submit" class="w-60 btn btn-success" value="New Post">Edit Message</button>
+                                                                        <!--UPDATE Button-->
+                                                                            <button type="submit" class="w-60 btn  btn-success" value="New Post">Update Post</button>
+                                                                            <input type="hidden" name="next" value="{{ next }}" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>           
+                                                    </form>
+                                                    <!--unnecessary?-->
+                                                    <div class="signup-error" style="color: darkgreen; text-align: center;">
+                                                        {{ form.errors }}
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </main>
+                                            </body>
                                         </div>
-                                    </div>
+                                    </div>                                     
                                 </div>
                             </div>
                         </div>
-<!--TEMP-->
+            {% endif %}
 
 <div class="buttons">
     <!-- just like how we added the artist detail link we can do the same thing for update -->
@@ -120,33 +133,17 @@
         <i class="fas fa-edit"></i>
       </span>
     </a>
-    {% if user.is_authenticated and user == post.user %} <!--only post author can edit/delete!-->
+    {% if user.is_authenticated and user == post.user %} <!--only post author can edit!-->
     <a href="{% url 'guestbook_update' post.pk %}" class="button btn-warning">EDIT (only author can see!)
       <span class="icon">
         <i class="fas fa-trash-alt"></i>
       </span>
     </a>
+<!--only post author can delete!-->
+
+
     {% endif %}
   </div>
-
-<!--TEMP-->
-
-
-                        <!-- UPDATE MODAL: NOT YET WORKING-->
-
-
-<!--REFERENCE INFORMATION
-
-
-
--->
-
-<!--END Make modal update send text to form and auto submit, like signup or create modal-->
-
-
-
-
-
 
 
 
