@@ -51,50 +51,46 @@
 <div class="container-lg">
     {% for post in posts reversed %}
     <!--Bootstrap card for every post in DB, in order of most recent to oldest-->
-    <div class="card">
-        <div class="card-header">TITLE TEXT HERE: {{ post.title }}
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>BODY TEXT HERE: {{ post.body }}</p>
-                    <p>Created: {{ post.created_at }}</p>
-                    <footer class="blockquote-footer">From: {{ post.user.guest.name }} 
-                    <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
-                </blockquote>
+        <div class="card border-success mb-3">
+            <div class="card-header">TITLE TEXT HERE: {{ post.title }}
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>BODY TEXT HERE: {{ post.body }}</p>
+                        <p>Created: {{ post.created_at }}</p><!--Switch FROM and CREATED AT, the from should have more emphasis-->
+                        <footer class="blockquote-footer">From: {{ post.user.username }} 
+                        <cite title="Source Title">( RSVP: {{post.user.guest.rsvp}} )</cite></footer>
+                    </blockquote>
 
                     {% if user.is_authenticated and user == post.user %} 
-                    <button> 
-                        <a href="{% url 'guestbook_update' post.pk %}" class="button btn-primary">EDIT (only author can see!)
-                            <span class="icon">
-                            <i class="fas fa-trash-alt"></i>
-                            </span>
-                        </a>
-                    </button>
+
+                        <!--only post author can update!-->
+                            <a href="{% url 'guestbook_update' post.pk %}">
+                                <button type="button" class="btn btn-primary btn-sm">Update</button>
+                            </a>
+
+
                         <!--only post author can delete!-->
-                    <button>
-                        <a href="{% url 'guestbook_delete' post.pk %}" class="button btn-warning">DELETE (only author can see!)
-                            <span class="icon">
-                            <i class="fas fa-trash-alt"></i>
-                            </span>
-                        </a>
-                    </button>
+                        <a href="{% url 'guestbook_delete' post.pk %}">
+                            <button type="button" class="btn btn-warning btn-sm">Remove</button>
+                          </a>
                     {% endif %}
+                </div>
             </div>
-        </div>
-    </div>                                     
+        </div><br>
+    {% endfor %}                                     
 </div>
-    <br><!--breathing room between each post-->      
-    <!--END Bootstrap card-->
-    {% endfor %}
+<!--breathing room between each post-->      
+<!--END Bootstrap card-->
 <!--END POST LOOP-->
        
 
 
 
-<!--Redundancy better for UX if guestbook scroll is too long. Add TO TOP button-->
-    <br>
-    <a href="{% url 'guestbook_create' %}">Leave a Message</a>
-    <br><br>
-    <hr class="solid">
+<!--Redundancy for testing purposes-->
+<br>
+<a href="{% url 'guestbook_create' %}">Leave a Message</a>
+<br><br>
+<hr class="solid">
 </div>
 <!--END OF GUESTBOOK 'CONTAINER'-->
 

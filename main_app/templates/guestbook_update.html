@@ -12,8 +12,7 @@
   }
 </style>
 
-
-
+<!--Contents of guestbook_update.html page-->
 <form action=" {% url 'guestbook_update' post.pk %} " method="post">
   <br>
   <h1 class="pt-3">Update Message</h1>
@@ -35,10 +34,10 @@
             <div  class="text-center">
               <!--Action buttons: cancel, submit-->
               <a href="{% url 'guestbook' %}">
-                <button type="button" class="w-60 btn btn-lg btn-secondary">Go Back</button>
+                <button type="button" class="w-60 btn btn-sm btn-secondary">Go Back</button>
               </a>
               <!--Most users are right-handed, primary should go on the right!-->
-              <button class="w-60 btn btn-lg btn-success" type="submit" value="Submit">Update Post</button>
+              <button class="w-60 btn btn-sm btn-success" type="submit" value="Submit">Update Post</button>
             </div>
         </div>
     </div>
