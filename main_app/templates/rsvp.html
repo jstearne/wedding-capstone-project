@@ -8,15 +8,16 @@
   form {
     color: darkgreen;
     background-color: darkgray;
+    height: 100vh;
   }
 </style>
 
 
 
 <form action="" method="post"><br><br>
-  <h1 class="pt-3">Update R.S.V.P. </h1>
+  <h1 class="pt-3"> R.S.V.P. </h1>
   <p>
-    Current: {{user.guest.rsvp}}
+    Currently: {{user.guest.rsvp}}
   </p>
 
   {% csrf_token %} {{form.as_p}} 
@@ -26,7 +27,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div  class="text-center">
-              <input type="submit" class="w-100 btn btn-success" value="Submit" />
+              <input type="submit" class="w-60 btn btn-success" value="Submit RSVP" />
             </div>
         </div>
     </div>

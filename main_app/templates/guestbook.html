@@ -10,8 +10,12 @@
 .container-sm{
     margin-top:-48px;
 }
+small {
+    font-size: small;
+}
 </style>
 
+<!--NEW POST FORM-->
 <div class="container-sm">
     <!--HTML post create HERE--><br><br>
     <body class="new-post-form"><!--ORIGINAL: <body class="signup-page">-->
@@ -32,130 +36,63 @@
             <!--Submit New Post Form-->
                 <button type="submit" class="w-100 btn btn-lg btn btn-success" value="New Post">Add New Message</button>
                 <input type="hidden" name="next" value="{{ next }}" />
-
             </form>
-
             <!--unnecessary?-->
             <div class="signup-error" style="color: darkgreen; text-align: center;">
                 {{ form.errors }}
             </div>
-
         </main>
     </body>
 </div>
 <!--END POST CREATE-->
-<br>
-<br>
+
+<br><br>
+
 <!--ALL POSTS LOOP HERE-->
 <!--ALL POSTS LOOP HERE-->
-<div class="container-lg">
-    {% for post in posts %}
-        <!--Bootstrap card for every post in DB-->
-        <div class="card">
-            <div class="card-header">TITLE TEXT HERE: {{ post.title }}</div>
+
+<div class="container-md">
+    {% for post in posts reversed %}
+    <!--Bootstrap card for every post in DB, in order of most recent to oldest-->
+        <div class="card border-success mb-3">
+            <div class="card-header">{{ post.title }}
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                        <p>BODY TEXT HERE: {{ post.body }}</p>
-                        <p>Created: {{ post.created_at }}</p>
-                        <footer class="blockquote-footer">From: {{ post.user.guest.name }} 
-                        <cite title="Source Title">( RSVP'D: {{post.user.guest.rsvp}} )</cite></footer>
+                        <p>{{ post.body }}</p>
+                        <!--linebreak--><hr/>
+                        <p>from: {{ post.user.username }}</p><!--Switch FROM and CREATED AT, the from should have more emphasis-->
+                        <footer class="blockquote-footer">RSVP: {{post.user.guest.rsvp}}</footer>   
+                        <cite title="Source Title"><small>{{ post.created_at }}</small>
+                        </cite>
                     </blockquote>
-                    <!--These WORK if I can't get update modal working by Wednesday!-->
-                        <a href="{% url 'guestbook_update' post.pk %}">Edit (Page)</a>&nbsp; &nbsp; 
-                        <a href="{% url 'guestbook_delete' post.pk %}">Delete (Page)</a>
-                        <br><br>
-                        <!--POST BODY END-->
 
+                    {% if user.is_authenticated and user == post.user %} 
 
+                        <!--only post author can update!-->
+                            <a href="{% url 'guestbook_update' post.pk %}">
+                                <button type="button" class="btn btn-primary btn-sm">Update</button>
+                            </a>
 
-                        <!-- UPDATE MODAL: NOT YET WORKING-->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit Post</button>
-                        <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
-                        <div class="modal fade" class="modalUpdate{{ obj.pk }}" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Update Message</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="recipient-name" class="col-form-label">Title:</label>
-                                                <input type="text" class="form-control" id="recipient-name">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Message:</label>
-                                                <textarea class="form-control" id="message-text"></textarea>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <!--Update functionality START-->
-                                            <form action="{% url 'guestbook_update' post.pk %}" data-target=".modalUpdate{{ obj.pk }}" method="POST">
-                                            {% csrf_token %}
-                                                <button class="btn btn-primary">Update Message</button><!--this just links to the update.html page, how to submit changes?-->
-                                            </form>
-                                            <!--Update functionality END-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UPDATE MODAL: NOT YET WORKING-->
-
-
-                        <!--DELETE MODAL-->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><!-- Button trigger modal -->
-                            Delete
-                        </button>  
-                        <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
-                            <div class="modal fade" id="staticBackdrop" class="modalDelete{{ obj.pk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Delete this message?</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-footer"><!--Giving me a weird top-shadow on cancel button-->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            </div>
-                                            <!--Delete functionality START-->
-                                            <form action="{% url 'guestbook_delete' post.pk %}" data-target=".modalDelete{{ obj.pk }}" method="POST">
-                                                {% csrf_token %}
-                                                <button class="btn btn-danger">Delete</button>
-                                            </form>
-                                            <!--Delete functionality END-->
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <!--Delete Modal-->
-                    </div>
-    </div><br><!--breathing room between each post-->      
-<!--END Bootstrap card-->
-    {% endfor %}
-<!--END POST LOOP-->
-       
-
-
-
-<!--Redundancy better for UX if guestbook scroll is too long. Add TO TOP button-->
-    <br>
-    <a href="{% url 'guestbook_create' %}">Leave a Message</a>
-    <br><br>
-    <hr class="solid">
+                        <!--only post author can delete!-->
+                        <a href="{% url 'guestbook_delete' post.pk %}">
+                            <button type="button" class="btn btn-warning btn-sm">Remove</button>
+                          </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div><br>
+    {% endfor %}                                     
 </div>
+<!--breathing room between each post-->      
+<!--END Bootstrap card-->
+<!--END POST LOOP-->
 <!--END OF GUESTBOOK 'CONTAINER'-->
-
 
 <!-- styled button: BACK TO TOP -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <div  class="text-center">
+            <div class="text-center">
                 <a href="{% url 'guestbook' %}">
                     <button type="submit" class=".col-6 w-40 btn btn-lg btn btn-success">
                         Back to Top
@@ -167,21 +104,11 @@
 </div>
 <br><br><br><br>
 
-Syntax reminders...<br>
-
-Currently logged in user: "{user.username}"" = "{ user.username }" <br>
-
-Currently logged in user RSVPD?: "{user.guest.rsvp}" = "{ user.guest.rsvp }"<br>
-
-Original post author: "{ post.user.username }" <br>
-
-Original post author RSVP: "{ post.user.guest.rsvp }"
-
-I may need to add an author-field to posts to get 'post-author'...
-
-
-
-
-
 {% endblock %} 
+
+
+
+
+
+
 
