@@ -133,14 +133,18 @@
         <i class="fas fa-edit"></i>
       </span>
     </a>
-    {% if user.is_authenticated and user == post.user %} <!--only post author can edit!-->
-    <a href="{% url 'guestbook_update' post.pk %}" class="button btn-warning">EDIT (only author can see!)
+    {% if user.is_authenticated and user == post.user %} <!--only post author can edit!--><!--THIS UPDATES and targets post correctly-->
+    <a href="{% url 'guestbook_update' post.pk %}" class="button btn-primary">EDIT (only author can see!)
       <span class="icon">
         <i class="fas fa-trash-alt"></i>
       </span>
     </a>
 <!--only post author can delete!-->
-
+    <a href="{% url 'guestbook_delete' post.pk %}" class="button btn-warning">DELETE (only author can see!)
+        <span class="icon">
+        <i class="fas fa-trash-alt"></i>
+        </span>
+    </a>
 
     {% endif %}
   </div>
@@ -150,28 +154,7 @@
 
 
 
-                        <!--DELETE MODAL: this works!-->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><!-- Button trigger modal -->
-                            Delete
-                        </button>  
-                        <!--secondary class="modalCRUD{{ obj.pk }}" to ensure the correct button is targeted for CRUD function-->
-                            <div class="modal fade" id="staticBackdrop" class="modalDelete{{ obj.pk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Delete this message?</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-footer"><!--Giving me a weird top-shadow on cancel button-->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            </div>
-                                            <!--Delete functionality START-->
-                                            <form action="{% url 'guestbook_delete' post.pk %}" data-target=".modalDelete{{ obj.pk }}" method="POST">
-                                                {% csrf_token %}
-                                                <button class="btn btn-danger">Delete</button>
-                                            </form>
-                                            <!--Delete functionality END-->
+
 
                                         </div>
                                     </div>
