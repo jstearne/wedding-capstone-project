@@ -10,13 +10,14 @@ Project Board 2: https://github.com/jstearne/wedding-capstone-project/projects/1
 Website Deployed: https://jo-and-jared.herokuapp.com/
 
 
-# Wireframe
+# Wireframe (PNG available)
 https://www.figma.com/file/J7vbI1CERgY6CZZwCYGhej/Wedding-Website?node-id=0%3A1
 
-# ERD
+# ERD (PDF available)
+https://app.diagrams.net/#Hjstearne%2Fwedding-site%2Fmain%2Ferd.drawio
 
-
-# User Flow
+# User Flow (PDF available)
+https://app.diagrams.net/#Hjstearne%2Fwedding-site%2Fmain%2Ferd.drawio
 
 
 This Heroku App is a fully functional, Django-powered full-stack website. The frontend is Bootstrap/CSS/HTML with a Python/Django backend and a Postgresql database for user, RSVP and guestbook message data. There are no additional technologies in the final production version. 
