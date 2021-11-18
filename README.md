@@ -10,13 +10,14 @@ Project Board 2: https://github.com/jstearne/wedding-capstone-project/projects/1
 Website Deployed: https://jo-and-jared.herokuapp.com/
 
 
-# Wireframe
+# Wireframe (PNG available)
 https://www.figma.com/file/J7vbI1CERgY6CZZwCYGhej/Wedding-Website?node-id=0%3A1
 
-# ERD
+# ERD (PDF available)
+https://app.diagrams.net/#Hjstearne%2Fwedding-site%2Fmain%2Ferd.drawio
 
-
-# User Flow
+# User Flow (PDF available)
+https://app.diagrams.net/#Hjstearne%2Fwedding-site%2Fmain%2Ferd.drawio
 
 
 This Heroku App is a fully functional, Django-powered full-stack website. The frontend is Bootstrap/CSS/HTML with a Python/Django backend and a Postgresql database for user, RSVP and guestbook message data. There are no additional technologies in the final production version. 
@@ -27,7 +28,7 @@ To run locally, users will need Python3.8+, Django 3.2.9, psycopg2-binary 2.9.1
 
 A number of design choices were made in an effort to present a website that is beautiful in mobile first, and functional on desktop, rather than the other way around. For example, we abandoned the two-column guestbook (posts on left, new message on right), and separated login and signup for simplicity on mobile. Fonts, colors, buttons, and images were all designed to be an enjoyable mobile experience (it works well on desktop too). We had CSS effects (leaves falling across the base.html) but this too was abandoned because it was too distracting and unnecessary on mobile devices - especially for older users!
 
-In the future, allowing users to upload images via the photos page would be a priority in advance of the wedding date. Additional Icebox tasks include updated page transitions via CSS/Javascript, and further media inquiry work to make the site even more presentable on desktop. 
+In the future, allowing users to upload images via the photos page would be a priority in advance of the wedding date. Additional Icebox tasks include updated page transitions via CSS/Javascript, and further media inquiry work to make the site even more presentable on desktop. Still debating with the committee (of two) whether or not to let users RSVP per individual event, rather than all-or-nothing.
 
 
 # User Stories
