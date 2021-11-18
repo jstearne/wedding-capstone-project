@@ -1,44 +1,61 @@
 {% extends 'base.html' %} {% block content %}
 
+<style>
+p {
+    text-align: center;
+}
+span {
+    font-weight: bolder; 
+    color: darkgreen;
+    text-align: center;
+}
+</style>
+
 <h1 class="title">Schedule</h1>
 
 <!--Bootstrap multi-level card for schedule items?-->
 <div class="container-md">
-    <div class="card text-left">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item " role="presentation">
-              <button class="nav-link active link-success"  id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Friday</button>
-            </li>
-            <li class="nav-item " role="presentation">
-              <button class="nav-link link-success" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Saturday</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link link-success" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Sunday</button>
-            </li>
-          </ul>
-          <!--Content for each page-->
-          <div class="tab-content" id="myTabContent">
-            <!--FRIDAY TAB-->
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <p style="text-align: center;"> 
-                    <span style="font-weight: bolder; color: darkgreen;"><br>Hair of the Dog Winery (6pm - 10pm)</span><br><br>
-                Come join us for a "Wedding Casual" party to celebrate the occassion. Live music, wine and dinner will be provided.
-                </p>
+    <div class="card border-success mb-3">
+        <div class="card text-left">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item " role="presentation">
+                <button class="nav-link active link-success"  id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Friday</button>
+                </li>
+                <li class="nav-item " role="presentation">
+                <button class="nav-link link-success" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Saturday</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                <button class="nav-link link-success" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Sunday</button>
+                </li>
+            </ul>
+            <!--Content for each page-->
+            <div class="tab-content" id="myTabContent">
+                <!--FRIDAY TAB-->
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <p><span><br>Zoidberg Wines (6pm - 10pm)</span><br><br>
+                    Come join us for a "Wedding Casual" party to celebrate the occassion. Live music, wine and dinner will be provided.
+                    </p>
+                </div>
+                <!--SATURDAY TAB-->
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <p><span><br>Hair of the Seymour Winery (11am - 1pm)</span><br><br>
+                        We'll have a light lunch with some wine pairings in Kenwood. Join us if you're able - and if not, there's pedialyte is in your gift bag.</p>
+                        <hr><!--Second event-->
+                    <p><span>The Farnsworth Paradox (2pm - 5pm)</span><br><br>
+                    We'll spend an afternoon in a spacious, outdoor winery, enjoying nature and trying a few choice California wines. 
+                
+                    </p>
+                </div>
+                
+                <!--SUNDAY TAB-->
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <p><span><br>Brunch at the Pool (whenever)</span><br><br>
+                        Late flight? We'll be hanging out at the pool with some food and drinks during the day. Feel free to swing by.
+                        </p>
+                </div>
             </div>
-            <!--SATURDAY TAB-->
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-            </div>
-            
-            <!--SUNDAY TAB-->
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-            </div>
-          
-        
-        
         </div>
-      </div>
+    </div>
 </div>
 
 {% endblock %} 
