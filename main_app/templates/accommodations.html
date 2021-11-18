@@ -1,12 +1,16 @@
 {% extends 'base.html' %} {% block content %}
-
+<style>
+    body {
+        opacity: 1;
+    }
+</style>
 <h1 class="title">Accommodations</h1>
-
+<body> 
 <!--CARDS for two hotels-->
 <div class="container-md">
     <div class="card border-success mb-3">
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="https://www.pleasantholidays.com/media/1bc18cb/hotel/images/SMI/smi_main.jpg" class="card-img-top" alt="fairmont-sonoma">
             <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -24,9 +28,12 @@
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
-            <img src="..." class="card-img-bottom" alt="...">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/52/5f/3d/exterior.jpg?w=900&h=-1&s=1" class="card-img-bottom" alt="hyatt-regency">
         </div>
     </div>
 </div>
+
+
+</body>
 
 {% endblock %} 
